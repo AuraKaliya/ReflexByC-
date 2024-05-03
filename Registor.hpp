@@ -12,6 +12,8 @@ public:
     }
 };
 
-#define REGISTER_CLASS(objectClass,baseName,...) \
-static Register< baseName , ##__VA_ARGS__ > Register_##objectClass_##__VA_ARGS__(  \
-#objectClass  , createFactoryCreator < objectClass , baseName , ##__VA_ARGS__ > ( ) );
+#define REGISTER_FUNCTIONNAME(line,objectClass,baseClass) Register_##objectClass##_##line
+#define REGISTER_CLASS_ARGS(line,objectClass,baseClass,...) \
+   static Register< baseClass , ##__VA_ARGS__ > REGISTER_FUNCTIONNAME(line,objectClass,baseClass)(  \
+#objectClass  , createFactoryCreator < objectClass , baseClass , ##__VA_ARGS__ > ( ) );
+#define REGISTER_CLASS(objectClass,baseClass,...) REGISTER_CLASS_ARGS(__LINE__,objectClass,baseClass,##__VA_ARGS__)
