@@ -1,7 +1,8 @@
 # Reflex_cpp
+
 A set of general-purpose C++ templates that implement precompile-time reflection.
 
-
+* 2024.6.1 ：add Copy Constructor Creator, need base-class's copy constructor.
 
 
 
